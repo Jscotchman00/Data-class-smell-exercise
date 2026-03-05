@@ -18,31 +18,19 @@ public class Invoice {
         return invoiceId;
     }
 
-    public void setInvoiceId(String invoiceId) {
-        this.invoiceId = invoiceId;
-    }
-
     public Order getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public double calculateFinalAmount() {
+        double base = order.calculateTotal();
+        double tax = base * taxRate; 
+        return base + tax - discount;
     }
 
-    public double getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(double taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void printInvoiceSummary() {
+        System.out.println("\nInvoice ID: " + this.getInvoiceId());
+        double finalAmount = this.calculateFinalAmount();
+        System.out.println("Final Amount (with tax & discount): $" + finalAmount);
     }
 }

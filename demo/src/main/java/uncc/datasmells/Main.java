@@ -17,11 +17,6 @@ public class Main {
 
         OrderService service = new OrderService();
 
-        service.printOrderSummary(order);
-
-        double total = service.calculateTotal(order);
-        System.out.println("Order Total: $" + total);
-
-        service.printInvoiceSummary(invoice);
+        service.processOrder(order, invoice);
     }
 }

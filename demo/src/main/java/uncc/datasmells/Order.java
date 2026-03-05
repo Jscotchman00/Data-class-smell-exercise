@@ -15,11 +15,27 @@ public class Order {
     }
 
     public String getOrderId() { return orderId; }
-    public void setOrderId(String orderId) { this.orderId = orderId; }
 
     public Customer getCustomer() { return customer; }
-    public void setCustomer(Customer customer) { this.customer = customer; }
 
     public List<Product> getProducts() { return products; }
-    public void setProducts(List<Product> products) { this.products = products; }
+
+    //Not sure what this method does
+     public double calculateTotal(){
+       return this.getProducts()
+                .stream()
+                .mapToDouble(Product::getPrice)
+                .sum();
+    }
+
+public void printOrderSummary() {
+        //Uses Order Data 
+        System.out.println("Order ID: " + this.getOrderId());
+        System.out.println("Customer: " + customer.getName());
+
+        //Put into Product
+        this.getProducts().forEach(product ->
+            //This can be moved to product public String printSummaryData()
+                System.out.println(product.printSummaryData()));
+    }
 }
